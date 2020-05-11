@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Agenda Ong - Cadastro de ONGs</title>
+<link rel="stylesheet" href="./style.css" />
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <div class="container">
+        <form method="post" action="#" th:object="${user}" th:action="@{/user/save}">
+            <h3>ONGs e Voluntários</h3>
+            <input type="text" placeholder="ID" id="id" th:field="*{id}" /></br>
+            <input type="text" placeholder="Login" id="login" th:field="*{login}" /></br>
+            <input type="text" placeholder="Nome" id="nome" th:field="*{nome}" /></br>
+            <input type="text" placeholder="Password" id="password" th:field="*{password}"/></br>
+            <input type="text" placeholder="Email" id="email" th:field="*{email}"/></br>
+            <textarea placeholder="Observações" rows="5" id="description" th:field="*{observacoes}" ></textarea></br>
+
+
+            <input type="submit" value="Submit"/>
+        </form>
+
+
+        <div class="result_message" th:if="${submitted}">
+            <h3>Usuario Criado!!!!.</h3>
+            <p>Listar todos os usuários <a href="/user/list">aqui</a>!!</p>
+        </div>
+    </div>
+</body>
+</html>

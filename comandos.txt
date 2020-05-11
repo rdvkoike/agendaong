@@ -1,0 +1,6 @@
+**************** Docker
+
+sudo docker build . -t t1
+
+sudo docker run -p 8080:8080 --name t1 --add-host="localhost:192.168.1.112" t1
+

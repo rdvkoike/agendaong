@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{user.title}"></title>
+    <link rel="stylesheet" href="./style.css" />
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <div class="container issue_list">
+        <h2>ONGs e Voluntários</h2>
+        <br />
+        <table>
+            <tr>
+                <th th:text="#{user.login}"></th>
+                <th th:text="#{user.nome}"></th>
+                <th th:text="#{user.email}"></th>
+                <th th:text="#{user.dtCriacao}"></th>
+                <th th:text="#{user.obs}"></th>
+            </tr>
+            <th:block th:each="user : ${users}">
+                <tr>
+                    <td><a th:href="@{/user/edit/{id}(id=${user.id})}" th:text="${user.login}"></a></td>
+                    <td th:text="${user.nome}">...</td>
+                    <td th:text="${user.email}">...</td>
+                    <td th:text="${#dates.format(user.dataCriacao, 'dd-MM-yyyy HH:mm')}">...</td>
+                    <td th:text="${user.observacoes}">...</td>
+					<td><a th:href="@{/user/delete/{id}(id=${user.id})}" th:text="#{general.del}"></a>
+    
+                    <!-- td ><a th:href="@{${issue.url}}" th:text="${issue.url}"></a></td>
+                    <td><span class="status" th:classappend="${issue.done} ? done : pending"></span></td> -->
+                </tr>
+            </th:block>
+        </table>
+    </div>
+    </br></br></br></br>
+    <a th:href="@{/user/new}" th:text="#{general.novo}"></a>
+</body>
+</html>
